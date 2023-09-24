@@ -1,0 +1,5 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: Create a Deployment by reading the definition from a local file 
+    command: kubectl apply -f /home/ubuntu/deployment.yml
