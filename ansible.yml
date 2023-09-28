@@ -6,7 +6,7 @@
     - name: Copy target to the remote server
       copy:
         src: /home/ubuntu/target  # Update the path to your Dockerfile
-        dest: /home/ubuntu/target  # Change this destination path as needed
+        dest: /home/ubuntu/  # Change this destination path as needed
       become_user: ubuntu
 
     - name: Build the Docker image
