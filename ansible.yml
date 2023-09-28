@@ -3,11 +3,11 @@
   hosts: 13.239.64.64  # You can use 'localhost' to run tasks locally
   become: yes
   tasks:
-  #  - name: Copy Dockerfile to the remote server
-  #    copy:
-  #      src: /path/to/your/Dockerfile  # Update the path to your Dockerfile
-  #      dest: /home/ubuntu/  # Change this destination path as needed
-  #    become_user: ubuntu
+    - name: Copy target to the remote server
+      copy:
+        src: /home/ubuntu/target/  # Update the path to your Dockerfile
+        dest: /home/ubuntu/  # Change this destination path as needed
+      become_user: ubuntu
 
     - name: Build the Docker image
       command: docker build -t abc-techno:latest /home/ubuntu/
@@ -42,7 +42,7 @@
           - "8080:8080"
 
     - name: Apply Kubernetes manifest
-      command: kubectl apply -f /path/to/your/deployment.yml  # Update the path to your Kubernetes manifest
+      command: kubectl apply -f /home/ubuntu/deployment.yml  # Update the path to your Kubernetes manifest
       args:
         executable: /bin/bash
       become_user: ubuntu
